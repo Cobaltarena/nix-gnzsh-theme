@@ -52,7 +52,7 @@ prompt_end() {
 # Context: user@hostname (who am I and where am I)
 prompt_context() {
   if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
-    prompt_segment black orange "%(!.%{%F{orange}%}.)$USER"
+    prompt_segment black yellow "%(!.%{%F{yellow}%}.)$USER"
   fi
 }
 
@@ -216,7 +216,7 @@ prompt_status() {
   [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{cyan}%}⚙"
 
   if [ ${#symbols[@]} -ne 0 ]; then
-    prompt_segment black orange "$symbols"
+    prompt_segment black yellow "$symbols"
   fi
 }
 
