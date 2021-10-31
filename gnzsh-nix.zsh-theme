@@ -1,3 +1,5 @@
+setopt prompt_subst
+
 # nix-shell: currently running nix-shell
 prompt_nix_shell() {
   if [[ -n "$IN_NIX_SHELL" ]]; then
@@ -26,12 +28,6 @@ prompt_virtualenv() {
     prompt_segment blue black "(`basename $virtualenv_path`)"
   fi
 }
-
-# Based on bira theme
-
-setopt prompt_subst
-
-() {
 
 local PR_USER PR_USER_OP PR_PROMPT PR_HOST
 
@@ -68,5 +64,3 @@ ZSH_THEME_GIT_PROMPT_PREFIX="%F{yellow}‹"
 ZSH_THEME_GIT_PROMPT_SUFFIX="› %f"
 ZSH_THEME_RUBY_PROMPT_PREFIX="%F{red}‹"
 ZSH_THEME_RUBY_PROMPT_SUFFIX="›%f"
-
-}
