@@ -15,6 +15,7 @@ CURRENT_BG='NONE'
   # escape sequence with a single literal character.
   # Do not change this! Do not make it '\u2b80'; that is the old, wrong code point.
   SEGMENT_SEPARATOR=$'\ue0b0'
+  BEGINNING_SEPARATOR=$'\u2192'
 }
 
 # Begin a segment
@@ -37,6 +38,7 @@ prompt_segment() {
 prompt_end() {
   if [[ -n $CURRENT_BG ]]; then
     echo " %{%k%F{$CURRENT_BG}%}$SEGMENT_SEPARATOR"
+    echo -n "$BEGINNING_SEPARATOR"
   else
     echo "%{%k%}"
   fi
@@ -165,10 +167,10 @@ prompt_hg() {
 
 # Dir: current working directory
 prompt_dir() {
-	if [[ -v CURRENT_PROJECT_DIR && -v CURRENT_PROJECT_NAME && $PWD =~ "^$CURRENT_PROJECT_DIR(.*)$" ]]; then
-	  prompt_segment blue black "$CURRENT_PROJECT_NAME$match[1]"
+            if [[ -v CURRENT_PROJECT_DIR && -v CURRENT_PROJECT_NAME && $PWD =~ "^$CURRENT_PROJECT_DIR(.*)$" ]]; then
+	  prompt_segment red black "$CURRENT_PROJECT_NAME$match[1]"
 	else
-    prompt_segment blue black '%~'
+    prompt_segment red black '%~'
 	fi
 }
 
